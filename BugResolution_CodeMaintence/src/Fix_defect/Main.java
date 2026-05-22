@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 public class Main {
 
-	public static void main(String[] args)  {
+	public static void main(String[] args) throws InterruptedException  {
 		
 	//Create List of LoanAccount object
 	List<LoanAccount> accounts=new  ArrayList<>();
@@ -43,6 +43,25 @@ public class Main {
     	 System.out.println("ACCount ID:"+loanAccount.getAccountId()+"\n"+"OverDuesDate:"+loanAccount.dueDate+"\n"+"Balance:"+loanAccount.outstandingBalance+"\n\n");
      }
     
+     
+     //T3 Thread-safety in BankStatementBatchProcessor
+     
+     // create sample data
+     List<StatementRecord> records=Arrays.asList(
+    		 new StatementRecord(1, 1200.50),
+    		 new StatementRecord(2, 1300.50),
+    		 new StatementRecord(3, 200.50),
+    		 new StatementRecord(3, 100.50),
+    		 new StatementRecord(4, 2200.50),
+    		 new StatementRecord(6, 3200.50)
+    		 
+    		 );
+     
+     
+     service.process(records);
+     
+     
+     
     
 	}
 
