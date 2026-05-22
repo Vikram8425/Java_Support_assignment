@@ -1,0 +1,45 @@
+
+1. Cause of ConcurrentModificationException
+
+This exception occurs when a ArrayList is modified. During traversed.
+Then java found ArrayList structure changed and throw Exception ConcurrentModificationException.
+
+
+2. Exception throws in line number 142 because modified A
+
+Most probably the code was removing elements from the same
+list inside a for-each loop.
+
+Example:
+
+for (LoanAccount account : accounts ) {
+    
+        accounts.remove(account);
+    
+}
+
+3. Minimal fix
+
+Use Iterator.remove() instead of removing directly
+from the list.
+
+Example:
+
+
+
+
+
+
+Iterator<Account>  acc=accounts.iterator();
+
+while(acc.hasNext()){
+ Account elements=acc.next();
+ if(elements.Invaild){
+  acc.remove;// safe remove
+  
+ }
+ 
+}
+
+
+
